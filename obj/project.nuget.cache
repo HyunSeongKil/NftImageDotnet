@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "cXrt5+q5d/N4Eg7oXnVJdGKRf+JlWuWULANW+wfpffQLQgMf9jM02BkTFU47DG0uEUXj1wuKDabO8ntuZxxWMg==",
+  "success": true,
+  "projectFilePath": "F:\\work\\my\\NftImageDotnet\\NftImageDotnet.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hyunseongkil\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\hyunseongkil\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
