@@ -9,6 +9,7 @@
 - 이미지 처리
 - 텍스트 파일 읽기
 - 로그 처리
+- vscode
 
 ## 실행 조건
 
@@ -22,4 +23,14 @@
 git remote add origin https://github.com/HyunSeongKil/NftImageDotnet.git
 git branch -M master
 git push -u origin master
+```
+
+## 실행
+
+```
+// NftImageDotnet.csproj 파일이 있는 폴더에서는 아래처럼 실행
+> dotnet run
+
+// NftImageDotnet.dll 파일이 있는 폴더에서는 아래처럼 실행
+> dotnet NftImageDotnet.dll
 ```
