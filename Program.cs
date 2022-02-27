@@ -4,23 +4,31 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Diagnostics;
 
+
+/**
+ * 두개의 이미지 병합하기 & 텍스트 표시하기
+ * author : HyunSeongKil
+ * date : 2022-02-26
+*/
 namespace NftImageDotnet
 {
   class Program
   {
     static void Main(string[] args)
     {
+      PrintUsage();
 
       if (!Valid())
       {
         return;
       }
 
-      string[] lines = System.IO.File.ReadAllLines($"{Environment.CurrentDirectory}/data.txt");
-      List<DataDto> dataDtos = ToDataDtos(lines);
-      Log($"전체 데이터:{dataDtos.Count}건");
+      //
+      List<DataDto> dataDtos = LoadDataDtos();
 
+      CreateOutDirectoryIfNotExist();
 
+      //
       Stopwatch sw = new Stopwatch();
       sw.Start();
 
@@ -32,13 +40,48 @@ namespace NftImageDotnet
         if (i++ % 100 == 0)
         {
           // 100건마다 로그 표시
-          Log($"#{i}", $"{sw.ElapsedMilliseconds}ms");
+          Log($"#{i}/{dataDtos.Count}", $"{sw.ElapsedMilliseconds}ms");
         }
       }
 
       sw.Stop();
       Log($"처리 데이터:{i}건", $"소요시간:{sw.ElapsedMilliseconds}ms");
 
+    }
+
+    static void CreateOutDirectoryIfNotExist()
+    {
+      if (!Directory.Exists($"{Environment.CurrentDirectory}/out"))
+      {
+        new DirectoryInfo($"{Environment.CurrentDirectory}").CreateSubdirectory("out");
+      }
+    }
+
+
+    private static void PrintUsage()
+    {
+      Console.WriteLine("Usage : dotnet NftImageDotnet.dll");
+      Console.WriteLine("\t├ Asset/Images : 이미지 파일(base.png, gold.png, silver.png, bronz.png) 폴더");
+      Console.WriteLine("\t├ Asset/Data : 데이터 파일(data.txt) 폴더");
+      Console.WriteLine("\t└ out : 결과 파일 생성되는 폴더");
+    }
+
+    private static List<DataDto> LoadDataDtos()
+    {
+      string[] lines = System.IO.File.ReadAllLines($"{GetDataPath()}/data.txt");
+      Log($"전체 데이터:{lines.Length}건");
+
+      return ToDataDtos(lines);
+    }
+
+    static string GetDataPath()
+    {
+      return $"{Environment.CurrentDirectory}/Asset/data";
+    }
+
+    static string GetImagesPath()
+    {
+      return $"{Environment.CurrentDirectory}/Asset/images";
     }
 
     /**
@@ -87,7 +130,7 @@ namespace NftImageDotnet
         filename = "gold.png";
       }
 
-      return Image.FromFile($"{Environment.CurrentDirectory}/{filename}");
+      return Image.FromFile($"{GetImagesPath()}/{filename}");
     }
 
 
@@ -96,7 +139,7 @@ namespace NftImageDotnet
     */
     static Image GetBaseImage()
     {
-      return System.Drawing.Image.FromFile($"{Environment.CurrentDirectory}/base.png");
+      return System.Drawing.Image.FromFile($"{GetImagesPath()}/base.png");
     }
 
 
@@ -108,31 +151,31 @@ namespace NftImageDotnet
     {
       bool b = true;
 
-      if (!System.IO.File.Exists($"{Environment.CurrentDirectory}/data.txt"))
+      if (!System.IO.File.Exists($"{GetDataPath()}/data.txt"))
       {
         Console.WriteLine("data.txt not found");
         b = false;
       }
 
-      if (!System.IO.File.Exists($"{Environment.CurrentDirectory}/base.png"))
+      if (!System.IO.File.Exists($"{GetImagesPath()}/base.png"))
       {
         Console.WriteLine("base.png not found");
         b = false;
       }
 
-      if (!System.IO.File.Exists($"{Environment.CurrentDirectory}/gold.png"))
+      if (!System.IO.File.Exists($"{GetImagesPath()}/gold.png"))
       {
         Console.WriteLine("gold.png not found");
         b = false;
       }
 
-      if (!System.IO.File.Exists($"{Environment.CurrentDirectory}/silver.png"))
+      if (!System.IO.File.Exists($"{GetImagesPath()}/silver.png"))
       {
         Console.WriteLine("silver.png not found");
         b = false;
       }
 
-      if (!System.IO.File.Exists($"{Environment.CurrentDirectory}/bronz.png"))
+      if (!System.IO.File.Exists($"{GetImagesPath()}/bronz.png"))
       {
         Console.WriteLine("bronz.png not found");
         b = false;
