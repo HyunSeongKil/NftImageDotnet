@@ -1,0 +1,10 @@
+F:\work\my\NftImageDotnet\bin\Debug\net5.0\publish\NftImageDotnet.exe
+F:\work\my\NftImageDotnet\bin\Debug\net5.0\publish\NftImageDotnet.dll
+F:\work\my\NftImageDotnet\bin\Debug\net5.0\publish\NftImageDotnet.deps.json
+F:\work\my\NftImageDotnet\bin\Debug\net5.0\publish\NftImageDotnet.runtimeconfig.json
+F:\work\my\NftImageDotnet\bin\Debug\net5.0\publish\NftImageDotnet.pdb
+F:\work\my\NftImageDotnet\bin\Debug\net5.0\publish\Microsoft.Win32.SystemEvents.dll
+F:\work\my\NftImageDotnet\bin\Debug\net5.0\publish\System.Drawing.Common.dll
+F:\work\my\NftImageDotnet\bin\Debug\net5.0\publish\runtimes\win\lib\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+F:\work\my\NftImageDotnet\bin\Debug\net5.0\publish\runtimes\unix\lib\netcoreapp3.1\System.Drawing.Common.dll
+F:\work\my\NftImageDotnet\bin\Debug\net5.0\publish\runtimes\win\lib\netcoreapp3.1\System.Drawing.Common.dll
