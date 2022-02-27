@@ -69,7 +69,6 @@ namespace NftImageDotnet
     private static List<DataDto> LoadDataDtos()
     {
       string[] lines = System.IO.File.ReadAllLines($"{GetDataPath()}/data.txt");
-      Log($"전체 데이터:{lines.Length}건");
 
       return ToDataDtos(lines);
     }
@@ -195,6 +194,18 @@ namespace NftImageDotnet
 
       foreach (string s in lines)
       {
+        // 공백
+        if (s.Trim().Length == 0)
+        {
+          continue;
+        }
+
+        // 주석
+        if (s.StartsWith('#'))
+        {
+          continue;
+        }
+
         string[] arr = s.Split('^');
         DataDto dataDto = new DataDto();
         dtos.Add(dataDto);
