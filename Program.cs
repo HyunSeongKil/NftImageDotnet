@@ -45,7 +45,7 @@ namespace NftImageDotnet
       }
 
       sw.Stop();
-      Log($"처리 데이터:{i}건", $"소요시간:{sw.ElapsedMilliseconds}ms");
+      Log($"처리 데이터:{i}건", $"소요시간:{sw.ElapsedMilliseconds / 1000}sec");
 
     }
 
@@ -89,15 +89,16 @@ namespace NftImageDotnet
      */
     static void Process(DataDto dto)
     {
-      Image baseImage = GetBaseImage();
+      Image baseImage = GetBaseImageByAmount(dto.Amount);
       Graphics g = Graphics.FromImage(baseImage);
-      Image subImage = GetSubImageByAmount(dto.Amount);
+      // Image subImage = GetSubImageByAmount(dto.Amount);
 
       // 이미지 병합
-      g.DrawImage(subImage, new Point(0, 0));
+      // g.DrawImage(subImage, new Point(0, 0));
 
       // 글자 쓰기
-      g.DrawString(dto.Address, new Font("나눔고딕", 20), new SolidBrush(Color.Red), new Point(0, 70));
+      g.DrawString("KR, SEOUL", new Font("Poppins", 36), new SolidBrush(Color.White), new Point(85, 388));
+      g.DrawString(dto.Address, new Font("Spoqa Han Sans Neo", 15), new SolidBrush(Color.White), new Point(90, 445));
 
       g.Dispose();
 
@@ -118,10 +119,12 @@ namespace NftImageDotnet
 
       if (10000 > amount)
       {
+        // 만원 미만
         filename = "bronz.png";
       }
       else if (100000 > amount)
       {
+        // 십만원 미만
         filename = "silver.png";
       }
       else
@@ -136,9 +139,47 @@ namespace NftImageDotnet
     /**
      * 기본 이미지 가져오기
     */
-    static Image GetBaseImage()
+    static Image GetBaseImageByAmount(int amount)
     {
-      return System.Drawing.Image.FromFile($"{GetImagesPath()}/base.png");
+
+      if (0 == amount)
+      {
+        // 무료
+        return GetImageByFilename("type-1.png");
+      }
+
+      if (amount < 100000)
+      {
+        // 10만원 미만
+        return GetImageByFilename("type-2.png");
+      }
+
+      if (amount < 200000)
+      {
+        // 20만원 미만
+        return GetImageByFilename("type-3.png");
+      }
+
+      if (amount < 500000)
+      {
+        // 50만원 미만
+        return GetImageByFilename("type-4.png");
+      }
+
+      if (amount < 10000000)
+      {
+        // 1000만원 미만
+        return GetImageByFilename("type-5.png");
+      }
+
+      // 1000만원 이상
+      return GetImageByFilename("type-6.png");
+
+    }
+
+    static Image GetImageByFilename(string filename)
+    {
+      return Image.FromFile($"{GetImagesPath()}/{filename}");
     }
 
 
