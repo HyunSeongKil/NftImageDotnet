@@ -73,6 +73,21 @@ namespace NftImageDotnet
       return ToDataDtos(lines);
     }
 
+    static string GetAddressString(DataDto dto)
+    {
+      return $"{dto.Sd} {dto.Sgg} {dto.Emd} {dto.Bonbun} {GetBuBunString(dto.Bubun)}";
+    }
+
+    static string GetBuBunString(string bubun)
+    {
+      if ("0".Equals(bubun))
+      {
+        return "";
+      }
+
+      return $"-{bubun}";
+    }
+
     static string GetDataPath()
     {
       return $"{Environment.CurrentDirectory}/Asset/data";
@@ -98,7 +113,7 @@ namespace NftImageDotnet
 
       // 글자 쓰기
       g.DrawString("KR, SEOUL", new Font("Poppins", 36), new SolidBrush(Color.White), new Point(85, 388));
-      g.DrawString(dto.Address, new Font("Spoqa Han Sans Neo", 15), new SolidBrush(Color.White), new Point(90, 445));
+      g.DrawString(GetAddressString(dto), new Font("Spoqa Han Sans Neo", 15), new SolidBrush(Color.White), new Point(90, 445));
 
       g.Dispose();
 
@@ -197,28 +212,13 @@ namespace NftImageDotnet
         b = false;
       }
 
-      if (!System.IO.File.Exists($"{GetImagesPath()}/base.png"))
+      for (int i = 1; i <= 6; i++)
       {
-        Console.WriteLine("base.png not found");
-        b = false;
-      }
-
-      if (!System.IO.File.Exists($"{GetImagesPath()}/gold.png"))
-      {
-        Console.WriteLine("gold.png not found");
-        b = false;
-      }
-
-      if (!System.IO.File.Exists($"{GetImagesPath()}/silver.png"))
-      {
-        Console.WriteLine("silver.png not found");
-        b = false;
-      }
-
-      if (!System.IO.File.Exists($"{GetImagesPath()}/bronz.png"))
-      {
-        Console.WriteLine("bronz.png not found");
-        b = false;
+        if (!System.IO.File.Exists($"{GetImagesPath()}/type-{i}.png"))
+        {
+          Console.WriteLine("type-{i}.png not found");
+          b = false;
+        }
       }
 
       return b;
@@ -251,11 +251,20 @@ namespace NftImageDotnet
         DataDto dataDto = new DataDto();
         dtos.Add(dataDto);
         dataDto.Pnu = arr[0];
-        dataDto.Address = arr[1];
         dataDto.Amount = int.Parse(arr[2]);
+        BindAddress(dataDto, arr[1].Split('|'));
       }
 
       return dtos;
+    }
+
+    private static void BindAddress(DataDto dto, string[] arr)
+    {
+      dto.Sd = arr[0];
+      dto.Sgg = arr[1];
+      dto.Emd = arr[2];
+      dto.Bonbun = arr[3];
+      dto.Bubun = arr[4];
     }
 
     static void Log(params object[] args)
