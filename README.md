@@ -38,4 +38,4 @@ git push -u origin master
 
 ## 실행 시간(예상)
 
-- 약 2.5초 / 100건 at i5-6600 8GB
+- 약 2.5초 / 100건 at CPU:i5-6600 MEMORY:8GB
