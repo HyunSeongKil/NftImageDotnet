@@ -78,6 +78,9 @@ namespace NftImageDotnet
       return $"{dto.Sd} {dto.Sgg} {dto.Emd} {dto.Bonbun} {GetBuBunString(dto.Bubun)}";
     }
 
+    /// <summary>
+    /// 부번이 0인 경우 공백 리턴
+    /// </summary>
     static string GetBuBunString(string bubun)
     {
       if ("0".Equals(bubun))

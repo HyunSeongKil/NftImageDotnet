@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "cXrt5+q5d/N4Eg7oXnVJdGKRf+JlWuWULANW+wfpffQLQgMf9jM02BkTFU47DG0uEUXj1wuKDabO8ntuZxxWMg==",
+  "dgSpecHash": "bhxt6SKYkw95GdOk82axTBpFDJtYUB9rGkVScVHqge9k6n3HRTxWVqNv2XXZgALwmT5eaXlUznxRJdSloaHOqQ==",
   "success": true,
-  "projectFilePath": "F:\\work\\my\\NftImageDotnet\\NftImageDotnet.csproj",
+  "projectFilePath": "D:\\work\\my\\NftImageDotnet\\NftImageDotnet.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\hyunseongkil\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
-    "C:\\Users\\hyunseongkil\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512"
+    "C:\\Users\\aha14\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\aha14\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
+    "C:\\Users\\aha14\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\aha14\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\aha14\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\aha14\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
   ],
   "logs": []
 }
